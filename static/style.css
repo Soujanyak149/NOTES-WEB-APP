@@ -1,0 +1,86 @@
+body {
+    background-color: #87CEFA; /* Sky light blue */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+textarea {
+    width: 80%;
+    height: 80px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Note card style */
+li {
+    background: #fff9c4; /* light yellow note color */
+    margin: 10px 0;
+    padding: 15px 15px 25px 15px;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    cursor: grab;
+}
+
+/* Delete button inside note */
+.delete-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: red;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Note content */
+.note-content {
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+/* Timestamp in bottom-right */
+.timestamp {
+    font-size: 10px;
+    color: #555;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}

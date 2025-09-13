@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Notes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+</head>
+<body>
+    <h1>WELCOME TO NOTES</h1>
+    <div class="container">
+        <form action="/add" method="POST">
+            <textarea name="note" placeholder="Enter your note here..." required></textarea><br>
+            <button type="submit">Add</button>
+        </form>
+
+        <h2>Previous Notes</h2>
+        <ul id="notes-list">
+            {% for note in notes %}
+            <li data-id="{{ note.id }}">
+                <a href="/delete/{{ note.id }}" class="delete-btn">X</a>
+                <div class="note-content">{{ note.content }}</div>
+                <small class="timestamp">{{ note.timestamp }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        var el = document.getElementById('notes-list');
+        var sortable = Sortable.create(el, {
+            animation: 150,
+            onEnd: function () {
+                let order = [];
+                document.querySelectorAll('#notes-list li').forEach(function (el) {
+                    order.push(el.getAttribute('data-id'));
+                });
+
+                fetch('/reorder', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ order: order })
+                });
+            }
+        });
+    </script>
+</body>
+</html>
